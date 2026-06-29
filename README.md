@@ -10,9 +10,9 @@ Crawls the latest YouTube Shorts every 30 minutes, tracks metrics for 24 hours a
   Crawler               Tracker
   search.list           videos.list (batch 50)
      │                      │
-     └──────── PostgreSQL ───┘
-               shorts
-               metrics_snapshots
+     └──────── PostgreSQL ───┘         ←── Dashboard (port 3000)
+               shorts                       velocity ranking
+               metrics_snapshots            metrics charts
 ```
 
 - **Crawler** — calls `search.list`, saves new Shorts to DB. Automatically computes `publishedAfter` from the last crawl timestamp (incremental).
@@ -65,14 +65,23 @@ npm run db:migrate
 ### Run
 
 ```bash
-# Start the scheduler (crawler + tracker run on cron)
+# Terminal 1 — scheduler (crawler + tracker on cron)
 npm start
 
-# Browse data in the browser
+# Terminal 2 — dashboard
+cd dashboard
+cp .env.example .env   # fill in DATABASE_URL (same as root .env)
+npm install
+npm run dev
+# Open http://localhost:3000
+
+# Optional: browse raw data
 npm run db:studio
 ```
 
 ## Scripts
+
+### Scheduler (root)
 
 | Script | Description |
 |---|---|
@@ -81,6 +90,14 @@ npm run db:studio
 | `npm run db:migrate` | Run Prisma migration |
 | `npm run db:studio` | Open Prisma Studio |
 | `npm run build` | Compile TypeScript |
+
+### Dashboard (`cd dashboard`)
+
+| Script | Description |
+|---|---|
+| `npm run dev` | Start dashboard at http://localhost:3000 |
+| `npm run build` | Build for production |
+| `npm start` | Run production build |
 
 ## YouTube API quota
 
@@ -125,6 +142,11 @@ src/
   scheduler/          node-cron orchestration
   db/                 Prisma repositories (ShortsRepository, MetricsRepository)
   domain/             Domain types: Short, MetricsSnapshot, Velocity
+
+dashboard/            Next.js 14 dashboard (separate process, port 3000)
+  app/                Pages and API routes (App Router)
+  components/         ShortsList, MetricsChart, SearchFilter
+  lib/                Prisma client (read-only), velocity calculation
 
 prisma/
   schema.prisma       Database schema

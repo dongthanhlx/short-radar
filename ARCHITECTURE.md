@@ -20,12 +20,33 @@
   │              PostgreSQL DB              │
   │   shorts          metrics_snapshots     │
   └─────────────────────────────────────────┘
+                      │
+                      │ read-only (Prisma)
+                      ▼
+              ┌───────────────┐
+              │   dashboard/  │  Next.js 14, port 3000
+              │   (separate   │  List view (velocity ranking)
+              │    process)   │  Detail view (metrics charts)
+              └───────────────┘
 
 YouTube API v3 ──► adapters/youtube/ ──► domain types (Short, MetricsSnapshot)
 Raw response never exits the adapter layer.
+dashboard/ NEVER imports from src/ — separate module boundary.
 ```
 
 ## Modules
+
+### `dashboard/`
+Job: Read-only web UI for velocity ranking and metrics visualization.
+Stack: Next.js 14 (App Router), Recharts, Tailwind CSS.
+Public interface: `npm run dev` (port 3000)
+Depends on: `@prisma/client` (read-only), same PostgreSQL DB via `DATABASE_URL`
+Must NOT: import from `src/`, write to DB, run on the same process as the scheduler
+Note: `calculateVelocity` is duplicated here from `src/analytics/` for MVP.
+Note: `dashboard/prisma/schema.prisma` mirrors `prisma/schema.prisma` — kept in sync manually.
+      The dashboard schema adds `output = "../node_modules/.prisma/client"` so Prisma generates
+      into the dashboard's own node_modules instead of the root.
+TODO[shared-lib]: extract to `packages/domain` when both processes need it.
 
 ### `scheduler/`
 Job: Trigger crawler and tracker on their respective cron schedules. Nothing else.
