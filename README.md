@@ -5,7 +5,7 @@ Crawls the latest YouTube Shorts every 30 minutes, tracks metrics for 24 hours a
 ## How it works
 
 ```
-[Cron: 30min]          [Cron: 5min]
+[Cron: 30min]          [Cron: 1h]
      │                      │
   Crawler               Tracker
   search.list           videos.list (batch 50)
