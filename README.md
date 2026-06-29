@@ -44,7 +44,7 @@ cp .env.example .env
 YOUTUBE_API_KEY=your_api_key_here
 DATABASE_URL=postgresql://postgres:postgres@localhost:5432/short_radar
 CRAWLER_CRON=*/30 * * * *
-TRACKER_CRON=*/5 * * * *
+TRACKER_CRON=0 * * * *
 SHORTS_QUERY="#shorts"
 MAX_RESULTS_PER_CRAWL=50
 ```
@@ -89,8 +89,8 @@ Default budget with 10,000 units/day free tier:
 | Job | Frequency | Cost/call | Units/day |
 |---|---|---|---|
 | Crawler (`search.list`) | 30 min | 100 | 4,800 |
-| Tracker (`videos.list`, batch 50) | 5 min | 1 | ≤ 288 |
-| **Total** | | | **≤ 5,088** |
+| Tracker (`videos.list`, batch 50) | 1 hour | 1 | ≤ 96 |
+| **Total** | | | **≤ 4,896** |
 
 ## Querying velocity
 
