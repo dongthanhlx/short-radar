@@ -1,0 +1,79 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "XhIGOSc2rqpMMq9241KIstD3alE",
+  "regionCode": "VN",
+  "pageInfo": {
+    "totalResults": 2,
+    "resultsPerPage": 2
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "6k9QanC9u-4Zr1Ln8XJB0wcBOD0",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "uTUA8zO90vM"
+      },
+      "snippet": {
+        "publishedAt": "2026-06-29T04:00:11Z",
+        "channelId": "UC-liG37GD6swtdH9NN8_6OQ",
+        "title": "*NEW* FOOTBALL EVENT + ADMIN ABUSE #3 in Fortnite Steal The Brainrot!",
+        "description": "Today I'm playing The FOOTBALL EVENT + ADMIN ABUSE #3 in Fortnite Steal The Brainrot! DON'T FORGET TO WATCH THE ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/uTUA8zO90vM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/uTUA8zO90vM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/uTUA8zO90vM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "C4SH_FNC",
+        "liveBroadcastContent": "none",
+        "publishTime": "2026-06-29T04:00:11Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "ZUPAvCG89tjY7XALdxjKbtruIuc",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "NYbxo2kPbHQ"
+      },
+      "snippet": {
+        "publishedAt": "2026-06-29T04:00:25Z",
+        "channelId": "UC2piRdeDuoExhewsas0xIXg",
+        "title": "Sometimes being nice... pays off! 😜 Just ask Scotties Designs !",
+        "description": "LINKS WEBSITE: https://creatorseries.gg TWITTER: https://twitter.com/CreatorSeriesGG DISCORD: https://creatorseries.gg/discord ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/NYbxo2kPbHQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/NYbxo2kPbHQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/NYbxo2kPbHQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Creator Series",
+        "liveBroadcastContent": "none",
+        "publishTime": "2026-06-29T04:00:25Z"
+      }
+    }
+  ]
+}

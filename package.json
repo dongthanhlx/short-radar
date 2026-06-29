@@ -1,0 +1,56 @@
+{
+  "name": "short-radar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "build": "tsc",
+    "start": "ts-node src/index.ts",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio",
+    "postinstall": "prisma generate"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/tests"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": [
+        "ts-jest",
+        {
+          "tsconfig": "tsconfig.test.json"
+        }
+      ]
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^26.0.1",
+    "jest": "^30.4.2",
+    "prisma": "^5.22.0",
+    "ts-jest": "^29.4.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "@types/node-cron": "^3.0.11",
+    "@types/pg": "^8.20.0",
+    "axios": "^1.18.1",
+    "dotenv": "^17.4.2",
+    "node-cron": "^4.5.0",
+    "pg": "^8.22.0"
+  }
+}

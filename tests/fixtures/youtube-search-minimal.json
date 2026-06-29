@@ -1,0 +1,10 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "8s6M-swEhVnsCKvijMFtt0Z4b5k",
+  "regionCode": "VN",
+  "pageInfo": {
+    "totalResults": 0,
+    "resultsPerPage": 0
+  },
+  "items": []
+}

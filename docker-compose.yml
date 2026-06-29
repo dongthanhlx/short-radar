@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: reel_radar
+      POSTGRES_USER: reel_radar
+      POSTGRES_PASSWORD: reel_radar
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

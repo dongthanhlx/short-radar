@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Short {
+  videoId     String   @id @map("video_id")
+  channelId   String   @map("channel_id")
+  title       String
+  publishedAt DateTime @map("published_at")
+  crawledAt   DateTime @default(now()) @map("crawled_at")
+
+  snapshots MetricsSnapshot[]
+
+  @@index([publishedAt(sort: Desc)])
+  @@map("shorts")
+}
+
+model MetricsSnapshot {
+  id           Int      @id @default(autoincrement())
+  videoId      String   @map("video_id")
+  capturedAt   DateTime @map("captured_at")
+  viewCount    Int      @map("view_count")
+  likeCount    Int      @map("like_count")
+  commentCount Int      @map("comment_count")
+
+  short Short @relation(fields: [videoId], references: [videoId])
+
+  @@unique([videoId, capturedAt])
+  @@index([videoId, capturedAt])
+  @@map("metrics_snapshots")
+}

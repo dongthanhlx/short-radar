@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "YouTube Data API v3 — short-radar",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
